@@ -1,0 +1,399 @@
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+8389 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+8733 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+8733 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+8983 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+35459 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+476355 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown column property autoIncrementSequenceName changed while monitoring pkTable
+476386 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown column property autoIncrementSequenceName changed while monitoring pkTable
+476402 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown column property autoIncrementSequenceName changed while monitoring pkTable
+477773 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE TABLE especialidad (
+                id_especialidad INT AUTO_INCREMENT NOT NULL,
+                especialidad VARCHAR(50) NOT NULL,
+                PRIMARY KEY (id_especialidad)
+)
+477773 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE medico (
+                cedula_medico VARCHAR(15) NOT NULL,
+                nombre_medico VARCHAR(100) NOT NULL,
+                sexo_medico VARCHAR(30) NOT NULL,
+                telefono_medico VARCHAR(10) NOT NULL,
+                id_especialidad INT NOT NULL,
+                PRIMARY KEY (cedula_medico)
+)
+477773 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE paciente (
+                cedula_paciente VARCHAR(10) NOT NULL,
+                nombre_paciente VARCHAR(120) NOT NULL,
+                sexo_paciente VARCHAR(30) NOT NULL,
+                fecha_nacimiento VARCHAR(25) NOT NULL,
+                estado_civil VARCHAR(20) NOT NULL,
+                tipo_sangre VARCHAR(25) NOT NULL,
+                telefono_paciente VARCHAR(10) NOT NULL,
+                PRIMARY KEY (cedula_paciente)
+)
+477773 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE antecedentes_paciente (
+                id_antecedentes INT AUTO_INCREMENT NOT NULL,
+                tipo_enfermedad VARCHAR(100) NOT NULL,
+                fecha_dianostico DATE NOT NULL,
+                tratamiento_recibido VARCHAR(500) NOT NULL,
+                estado_actual VARCHAR(100) NOT NULL,
+                antecedentes_enf_familia VARCHAR(100) NOT NULL,
+                cedula_paciente VARCHAR(10) NOT NULL,
+                PRIMARY KEY (id_antecedentes)
+)
+477789 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE alergias (
+                id_alergias INT AUTO_INCREMENT NOT NULL,
+                alergias VARCHAR(100) NOT NULL,
+                gravedad VARCHAR(100) NOT NULL,
+                cedula_paciente VARCHAR(10) NOT NULL,
+                PRIMARY KEY (id_alergias)
+)
+477789 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE rol (
+                id_rol INT AUTO_INCREMENT NOT NULL,
+                rol VARCHAR(50) NOT NULL,
+                PRIMARY KEY (id_rol)
+)
+477789 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE menu (
+                id_menu INT AUTO_INCREMENT NOT NULL,
+                menu VARCHAR(50) NOT NULL,
+                icono VARCHAR(50) NOT NULL,
+                archivo VARCHAR(50) NOT NULL,
+                id_rol INT NOT NULL,
+                PRIMARY KEY (id_menu)
+)
+477789 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE usuario (
+                id_usuario INT AUTO_INCREMENT NOT NULL,
+                cedula_usu VARCHAR(10) NOT NULL,
+                nombre_usu VARCHAR(120) NOT NULL,
+                estado_usu VARCHAR(5) NOT NULL,
+                usuario_usuario VARCHAR(120) NOT NULL,
+                contrase VARCHAR(120) NOT NULL,
+                id_rol INT NOT NULL,
+                PRIMARY KEY (id_usuario)
+)
+477789 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER TABLE medico ADD CONSTRAINT especialidad_medico_fk
+FOREIGN KEY (id_especialidad)
+REFERENCES especialidad (id_especialidad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+477789 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE alergias ADD CONSTRAINT paciente_alergias_fk
+FOREIGN KEY (cedula_paciente)
+REFERENCES paciente (cedula_paciente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+477789 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE antecedentes_paciente ADD CONSTRAINT paciente_antecedentes_paciente_fk
+FOREIGN KEY (cedula_paciente)
+REFERENCES paciente (cedula_paciente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+477789 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE usuario ADD CONSTRAINT rol_usuario_fk
+FOREIGN KEY (id_rol)
+REFERENCES rol (id_rol)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+477789 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE menu ADD CONSTRAINT rol_menu_fk
+FOREIGN KEY (id_rol)
+REFERENCES rol (id_rol)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+477835 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :13
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+6730 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+7115 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+7116 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+7494 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+32804 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+285814 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@1069492]
+287502 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@1069492]
+353691 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@1069492]
+1472606 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@1069492]
+1512863 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@1069492]
+2140564 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@1069492]
+2141658 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@1069492]
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+8872 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+9279 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+9279 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+9544 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+40470 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+1139364 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown column property autoIncrementSequenceName changed while monitoring pkTable
+1141541 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE TABLE Prueba_medica (
+                id_pr_medica INT AUTO_INCREMENT NOT NULL,
+                prueba_medica VARCHAR(100) NOT NULL,
+                PRIMARY KEY (id_pr_medica)
+)
+1141542 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE tipo_atencion (
+                id_tipo INT AUTO_INCREMENT NOT NULL,
+                tipo_atencion VARCHAR(80) NOT NULL,
+                PRIMARY KEY (id_tipo)
+)
+1141543 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE especialidad (
+                id_especialidad INT AUTO_INCREMENT NOT NULL,
+                especialidad VARCHAR(50) NOT NULL,
+                PRIMARY KEY (id_especialidad)
+)
+1141544 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE medico (
+                cedula_medico VARCHAR(15) NOT NULL,
+                nombre_medico VARCHAR(100) NOT NULL,
+                sexo_medico VARCHAR(30) NOT NULL,
+                telefono_medico VARCHAR(10) NOT NULL,
+                id_especialidad INT NOT NULL,
+                PRIMARY KEY (cedula_medico)
+)
+1141545 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE paciente (
+                cedula_paciente VARCHAR(10) NOT NULL,
+                nombre_paciente VARCHAR(120) NOT NULL,
+                sexo_paciente VARCHAR(30) NOT NULL,
+                fecha_nacimiento VARCHAR(25) NOT NULL,
+                estado_civil VARCHAR(20) NOT NULL,
+                tipo_sangre VARCHAR(25) NOT NULL,
+                telefono_paciente VARCHAR(10) NOT NULL,
+                PRIMARY KEY (cedula_paciente)
+)
+1141546 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE antecedentes_paciente (
+                id_antecedentes INT AUTO_INCREMENT NOT NULL,
+                tipo_enfermedad VARCHAR(100) NOT NULL,
+                fecha_dianostico DATE NOT NULL,
+                tratamiento_recibido VARCHAR(500) NOT NULL,
+                estado_actual VARCHAR(100) NOT NULL,
+                antecedentes_enf_familia VARCHAR(100) NOT NULL,
+                cedula_paciente VARCHAR(10) NOT NULL,
+                PRIMARY KEY (id_antecedentes)
+)
+1141546 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE alergias (
+                id_alergias INT AUTO_INCREMENT NOT NULL,
+                alergias VARCHAR(100) NOT NULL,
+                gravedad VARCHAR(100) NOT NULL,
+                cedula_paciente VARCHAR(10) NOT NULL,
+                PRIMARY KEY (id_alergias)
+)
+1141547 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE rol (
+                id_rol INT AUTO_INCREMENT NOT NULL,
+                rol VARCHAR(50) NOT NULL,
+                PRIMARY KEY (id_rol)
+)
+1141548 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE menu (
+                id_menu INT AUTO_INCREMENT NOT NULL,
+                menu VARCHAR(50) NOT NULL,
+                icono VARCHAR(50) NOT NULL,
+                archivo VARCHAR(50) NOT NULL,
+                id_rol INT NOT NULL,
+                PRIMARY KEY (id_menu)
+)
+1141549 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE usuario (
+                id_usuario INT AUTO_INCREMENT NOT NULL,
+                cedula_usu VARCHAR(10) NOT NULL,
+                nombre_usu VARCHAR(120) NOT NULL,
+                estado_usu VARCHAR(5) NOT NULL,
+                usuario_usuario VARCHAR(120) NOT NULL,
+                contrase VARCHAR(120) NOT NULL,
+                id_rol INT NOT NULL,
+                PRIMARY KEY (id_usuario)
+)
+1141550 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE atencion (
+                id_atencion INT AUTO_INCREMENT NOT NULL,
+                cedula_paciente VARCHAR(10) NOT NULL,
+                cedula_medico VARCHAR(15) NOT NULL,
+                id_usuario INT NOT NULL,
+                id_tipo INT NOT NULL,
+                estado_paciente_inicio VARCHAR(120) NOT NULL,
+                descripcion VARCHAR(500) NOT NULL,
+                fecha_inicio DATE NOT NULL,
+                fecha_fin DATE NOT NULL,
+                fecha_registrada DATE NOT NULL,
+                PRIMARY KEY (id_atencion)
+)
+1141550 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE examen (
+                id_examen INT AUTO_INCREMENT NOT NULL,
+                id_atencion INT NOT NULL,
+                descripcion_examen VARCHAR(120) NOT NULL,
+                PRIMARY KEY (id_examen)
+)
+1141551 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE detalle_examen (
+                id_det_examen INT AUTO_INCREMENT NOT NULL,
+                id_examen INT NOT NULL,
+                id_pr_medica INT NOT NULL,
+                PRIMARY KEY (id_det_examen)
+)
+1141554 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER TABLE detalle_examen ADD CONSTRAINT prueba_medica_detalle_examen_fk
+FOREIGN KEY (id_pr_medica)
+REFERENCES Prueba_medica (id_pr_medica)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141554 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE atencion ADD CONSTRAINT tipo_atencion_atencion_fk
+FOREIGN KEY (id_tipo)
+REFERENCES tipo_atencion (id_tipo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141555 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE medico ADD CONSTRAINT especialidad_medico_fk
+FOREIGN KEY (id_especialidad)
+REFERENCES especialidad (id_especialidad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141557 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE atencion ADD CONSTRAINT medico_atencion_fk
+FOREIGN KEY (cedula_medico)
+REFERENCES medico (cedula_medico)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141558 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE alergias ADD CONSTRAINT paciente_alergias_fk
+FOREIGN KEY (cedula_paciente)
+REFERENCES paciente (cedula_paciente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141558 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE antecedentes_paciente ADD CONSTRAINT paciente_antecedentes_paciente_fk
+FOREIGN KEY (cedula_paciente)
+REFERENCES paciente (cedula_paciente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141559 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE atencion ADD CONSTRAINT paciente_atencion_fk
+FOREIGN KEY (cedula_paciente)
+REFERENCES paciente (cedula_paciente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141560 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE usuario ADD CONSTRAINT rol_usuario_fk
+FOREIGN KEY (id_rol)
+REFERENCES rol (id_rol)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141561 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE menu ADD CONSTRAINT rol_menu_fk
+FOREIGN KEY (id_rol)
+REFERENCES rol (id_rol)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141562 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE atencion ADD CONSTRAINT usuario_atencion_fk
+FOREIGN KEY (id_usuario)
+REFERENCES usuario (id_usuario)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141563 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE examen ADD CONSTRAINT atencion_examen_fk
+FOREIGN KEY (id_atencion)
+REFERENCES atencion (id_atencion)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141564 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE detalle_examen ADD CONSTRAINT examen_detalle_examen_fk
+FOREIGN KEY (id_examen)
+REFERENCES examen (id_examen)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+1141604 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :25
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+1250 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+1468 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+1484 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+1672 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+25326 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+4575 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+4859 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+4859 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+5142 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+30888 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+233449 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@123b404]
+235421 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@123b404]
+236828 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@123b404]
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+5345 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+5644 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+5646 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+5924 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+33202 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+3237 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+3518 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+3534 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+3800 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+28707 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
