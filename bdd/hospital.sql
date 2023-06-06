@@ -1,0 +1,300 @@
+
+CREATE TABLE medicamento (
+                id_medicamento INT AUTO_INCREMENT NOT NULL,
+                codigo VARCHAR(20) NOT NULL,
+                descripcion VARCHAR(100) NOT NULL,
+                forma VARCHAR(25) NOT NULL,
+                concentracion VARCHAR(120) NOT NULL,
+                viaadmin VARCHAR(100) NOT NULL,
+                indicaciones VARCHAR(100) NOT NULL,
+                PRIMARY KEY (id_medicamento)
+);
+
+
+CREATE TABLE Prueba_medica (
+                id_pr_medica INT AUTO_INCREMENT NOT NULL,
+                prueba_medica VARCHAR(100) NOT NULL,
+                PRIMARY KEY (id_pr_medica)
+);
+
+
+CREATE TABLE tipo_atencion (
+                id_tipo INT AUTO_INCREMENT NOT NULL,
+                tipo_atencion VARCHAR(80) NOT NULL,
+                PRIMARY KEY (id_tipo)
+);
+
+
+CREATE TABLE especialidad (
+                id_especialidad INT AUTO_INCREMENT NOT NULL,
+                especialidad VARCHAR(50) NOT NULL,
+                PRIMARY KEY (id_especialidad)
+);
+
+
+CREATE TABLE medico (
+                cedula_medico VARCHAR(15) NOT NULL,
+                nombre_medico VARCHAR(100) NOT NULL,
+                sexo_medico VARCHAR(30) NOT NULL,
+                telefono_medico VARCHAR(10) NOT NULL,
+                id_especialidad INT NOT NULL,
+                estado_medico VARCHAR(5) NOT NULL,
+                PRIMARY KEY (cedula_medico)
+);
+
+ALTER TABLE medico MODIFY COLUMN estado_medico VARCHAR(5) COMMENT 'ano,Ca->Casa';
+
+
+CREATE TABLE paciente (
+                cedula_paciente VARCHAR(10) NOT NULL,
+                nombre_paciente VARCHAR(120) NOT NULL,
+                sexo_paciente VARCHAR(30) NOT NULL,
+                fecha_nacimiento VARCHAR(25) NOT NULL,
+                estado_civil VARCHAR(20) NOT NULL,
+                tipo_sangre VARCHAR(25) NOT NULL,
+                telefono_paciente VARCHAR(10) NOT NULL,
+                PRIMARY KEY (cedula_paciente)
+);
+
+
+CREATE TABLE contacto (
+                id_contacto INT AUTO_INCREMENT NOT NULL,
+                cedula_contacto VARCHAR(10) NOT NULL,
+                nombre_contacto VARCHAR(80) NOT NULL,
+                telefono VARCHAR(10) NOT NULL,
+                parentesco VARCHAR(10) NOT NULL,
+                cedula_paciente VARCHAR(10) NOT NULL,
+                PRIMARY KEY (id_contacto)
+);
+
+
+CREATE TABLE antecedentes_paciente (
+                id_antecedentes INT AUTO_INCREMENT NOT NULL,
+                tipo_enfermedad VARCHAR(100) NOT NULL,
+                fecha_dianostico DATE NOT NULL,
+                tratamiento_recibido VARCHAR(500) NOT NULL,
+                estado_actual VARCHAR(100) NOT NULL,
+                parentesco_familiar VARCHAR(100) NOT NULL,
+                nombre_familiar VARCHAR(100) NOT NULL,
+                antecedentes_enf_familia VARCHAR(100) NOT NULL,
+                cedula_paciente VARCHAR(10) NOT NULL,
+                PRIMARY KEY (id_antecedentes)
+);
+
+
+CREATE TABLE alergias (
+                id_alergias INT AUTO_INCREMENT NOT NULL,
+                alergias VARCHAR(100) NOT NULL,
+                gravedad VARCHAR(100) NOT NULL,
+                cedula_paciente VARCHAR(10) NOT NULL,
+                PRIMARY KEY (id_alergias)
+);
+
+
+CREATE TABLE rol (
+                id_rol INT AUTO_INCREMENT NOT NULL,
+                rol VARCHAR(50) NOT NULL,
+                PRIMARY KEY (id_rol)
+);
+
+
+CREATE TABLE menu (
+                id_menu INT AUTO_INCREMENT NOT NULL,
+                menu VARCHAR(50) NOT NULL,
+                icono VARCHAR(50) NOT NULL,
+                archivo VARCHAR(50) NOT NULL,
+                id_rol INT NOT NULL,
+                PRIMARY KEY (id_menu)
+);
+
+
+CREATE TABLE usuario (
+                id_usuario INT AUTO_INCREMENT NOT NULL,
+                cedula_usu VARCHAR(10) NOT NULL,
+                nombre_usu VARCHAR(120) NOT NULL,
+                estado_usu VARCHAR(5) NOT NULL,
+                usuario_usuario VARCHAR(120) NOT NULL,
+                contrase VARCHAR(120) NOT NULL,
+                id_rol INT NOT NULL,
+                PRIMARY KEY (id_usuario)
+);
+
+
+CREATE TABLE atencion (
+                id_atencion INT AUTO_INCREMENT NOT NULL,
+                cedula_paciente VARCHAR(10) NOT NULL,
+                cedula_medico VARCHAR(15) NOT NULL,
+                id_usuario INT NOT NULL,
+                id_tipo INT NOT NULL,
+                estado_paciente_inicio VARCHAR(120) NOT NULL,
+                descripcion VARCHAR(500) NOT NULL,
+                fecha_inicio DATE NOT NULL,
+                fecha_fin DATE NOT NULL,
+                fecha_registrada DATE NOT NULL,
+                PRIMARY KEY (id_atencion)
+);
+
+
+CREATE TABLE tratamiento (
+                id_tratamiento INT AUTO_INCREMENT NOT NULL,
+                id_atencion INT NOT NULL,
+                tratamiento VARCHAR(60) NOT NULL,
+                estado_tratamiento VARCHAR(50) NOT NULL,
+                fecha_registrado DATE NOT NULL,
+                duracion DATE NOT NULL,
+                PRIMARY KEY (id_tratamiento)
+);
+
+
+CREATE TABLE detalle_tratamiento (
+                id_detalle_tratamiento INT AUTO_INCREMENT NOT NULL,
+                id_tratamiento INT NOT NULL,
+                id_medicamento INT NOT NULL,
+                hora_consumo VARCHAR(50) NOT NULL,
+                PRIMARY KEY (id_detalle_tratamiento)
+);
+
+
+CREATE TABLE signosvitales (
+                id_signos INT AUTO_INCREMENT NOT NULL,
+                id_atencion INT NOT NULL,
+                pulso DECIMAL(10,2) NOT NULL,
+                presion DECIMAL(10,2) NOT NULL,
+                respiracion DECIMAL(10,2) NOT NULL,
+                temperatura DECIMAL(10,2) NOT NULL,
+                PRIMARY KEY (id_signos)
+);
+
+
+CREATE TABLE examen (
+                id_examen INT AUTO_INCREMENT NOT NULL,
+                id_atencion INT NOT NULL,
+                descripcion_examen VARCHAR(120) NOT NULL,
+                PRIMARY KEY (id_examen)
+);
+
+
+CREATE TABLE detalle_examen (
+                id_det_examen INT AUTO_INCREMENT NOT NULL,
+                id_examen INT NOT NULL,
+                id_pr_medica INT NOT NULL,
+                observacionn VARCHAR(300) NOT NULL,
+                PRIMARY KEY (id_det_examen)
+);
+
+
+CREATE TABLE resultado (
+                id_resultados INT AUTO_INCREMENT NOT NULL,
+                id_det_examen INT NOT NULL,
+                valor DECIMAL(10,2) NOT NULL,
+                PRIMARY KEY (id_resultados)
+);
+
+
+ALTER TABLE detalle_tratamiento ADD CONSTRAINT medicamento_detalle_tratamiento_fk
+FOREIGN KEY (id_medicamento)
+REFERENCES medicamento (id_medicamento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE detalle_examen ADD CONSTRAINT prueba_medica_detalle_examen_fk
+FOREIGN KEY (id_pr_medica)
+REFERENCES Prueba_medica (id_pr_medica)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE atencion ADD CONSTRAINT tipo_atencion_atencion_fk
+FOREIGN KEY (id_tipo)
+REFERENCES tipo_atencion (id_tipo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE medico ADD CONSTRAINT especialidad_medico_fk
+FOREIGN KEY (id_especialidad)
+REFERENCES especialidad (id_especialidad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE atencion ADD CONSTRAINT medico_atencion_fk
+FOREIGN KEY (cedula_medico)
+REFERENCES medico (cedula_medico)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE alergias ADD CONSTRAINT paciente_alergias_fk
+FOREIGN KEY (cedula_paciente)
+REFERENCES paciente (cedula_paciente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE antecedentes_paciente ADD CONSTRAINT paciente_antecedentes_paciente_fk
+FOREIGN KEY (cedula_paciente)
+REFERENCES paciente (cedula_paciente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE atencion ADD CONSTRAINT paciente_atencion_fk
+FOREIGN KEY (cedula_paciente)
+REFERENCES paciente (cedula_paciente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE contacto ADD CONSTRAINT paciente_contacto_fk
+FOREIGN KEY (cedula_paciente)
+REFERENCES paciente (cedula_paciente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE usuario ADD CONSTRAINT rol_usuario_fk
+FOREIGN KEY (id_rol)
+REFERENCES rol (id_rol)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE menu ADD CONSTRAINT rol_menu_fk
+FOREIGN KEY (id_rol)
+REFERENCES rol (id_rol)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE atencion ADD CONSTRAINT usuario_atencion_fk
+FOREIGN KEY (id_usuario)
+REFERENCES usuario (id_usuario)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE examen ADD CONSTRAINT atencion_examen_fk
+FOREIGN KEY (id_atencion)
+REFERENCES atencion (id_atencion)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE signosvitales ADD CONSTRAINT atencion_signosvitales_fk
+FOREIGN KEY (id_atencion)
+REFERENCES atencion (id_atencion)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE tratamiento ADD CONSTRAINT atencion_tratamiento_fk
+FOREIGN KEY (id_atencion)
+REFERENCES atencion (id_atencion)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE detalle_tratamiento ADD CONSTRAINT tratamiento_detalle_tratamiento_fk
+FOREIGN KEY (id_tratamiento)
+REFERENCES tratamiento (id_tratamiento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE detalle_examen ADD CONSTRAINT examen_detalle_examen_fk
+FOREIGN KEY (id_examen)
+REFERENCES examen (id_examen)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE resultado ADD CONSTRAINT detalle_examen_resultado_fk
+FOREIGN KEY (id_det_examen)
+REFERENCES detalle_examen (id_det_examen)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
