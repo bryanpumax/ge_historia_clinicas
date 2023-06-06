@@ -18,6 +18,7 @@ while ($row=$consulta->fetch()) {
     $_SESSION["id_rol"]=$row["id_rol"];
     $_SESSION["rol"]=$row["rol"];
     $_SESSION["nombre_usu"]=$row["nombre_usu"];
+    $_SESSION["cedula_usu"]=$row["cedula_usu"];
     $estado=$row["estado_usu"];
     $nombre_usu=$row["nombre_usu"];
     $rol=$row["rol"];

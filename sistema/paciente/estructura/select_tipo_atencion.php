@@ -9,7 +9,7 @@
 $tabla="tipo_atencion";
 $campo=" `id_tipo`, `tipo_atencion`";
 $inner="";
-$where="$inner "; 
+$where="$inner where tipo_atencion!='Casa'"; 
 $consulta=consultas($tabla, $campo, $where);
 $html='
 <div class="form-floating mb-4">

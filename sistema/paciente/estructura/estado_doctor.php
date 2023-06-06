@@ -18,11 +18,11 @@ when  medico.estado_medico= 'Qr' THEN 'danger'
 when  medico.estado_medico= 'Ca' THEN 'warning'
 end  as color,
 case
-when  medico.estado_medico= 'Co' THEN 'Consultorio'
-when  medico.estado_medico= 'Em' THEN 'Emergencia'
+when  medico.estado_medico= 'Co' THEN 'Consultorio' 
+when  medico.estado_medico= 'Em' THEN 'Emergencia'  
 when  medico.estado_medico= 'Hp' THEN 'Hospitilizacion'
-when  medico.estado_medico= 'Qr' THEN 'Quirofano'
-when  medico.estado_medico= 'Ca' THEN 'Casa'
+when  medico.estado_medico= 'Qr' THEN 'Quirofano'   
+when  medico.estado_medico= 'Ca' THEN 'Casa'    
 end  as estado_medico,
 
 case

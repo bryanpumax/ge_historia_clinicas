@@ -15,7 +15,9 @@ $dominio='https://hospital.lab-mrtecks.com/';
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 ">
-         
+        <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="<?=$dominio?>sistema/">Inicio</a>
+          </li>
           <div class="menu"></div>
         
           <li class="nav-item">

@@ -29,3 +29,19 @@ $.ajax({
     }
 });
     }
+    function inicioa() {
+        $(".titulo").html(titulo);
+$(".btn-close").click()
+var  dominio=localStorage.getItem("dominio")
+
+$.ajax({
+    type: "POST",
+    url: dominio+"sistema/"+archivo,
+    data: "",
+    success: function (response) {
+        $(".contenido").html(response)
+    }
+});
+
+
+    }
