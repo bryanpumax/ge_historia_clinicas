@@ -22,4 +22,8 @@ if ($consulta->rowCount()!=0) {
     $html="actualizada de atencion";
     update_table("$tabla", "$valor_actualizar", "$where");
 }
+$tabla="medico";
+$valor_actualizar="estado_medico='Co'";
+$where="where cedula_medico='$cedula_medico'";
+update_table("$tabla", "$valor_actualizar", "$where");
 echo $html;

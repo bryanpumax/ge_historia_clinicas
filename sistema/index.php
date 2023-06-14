@@ -33,10 +33,11 @@ if (!isset($_SESSION["id_rol"]) ) {
   <div class="card-header ">
   <h2 class="titulo">Inicio</h2>
   </div>
-  <div class="card-body contenido">
+  <div class="card-body contenido ">
  
- 
-    
+ <div class="mostrar_doctores"></div>
+    <div class="cantidad_personas_area"></div>
+    <div class="cantidad_personas_casa_hoy"></div>
   </div>
  
 </div>

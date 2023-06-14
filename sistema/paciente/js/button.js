@@ -64,9 +64,7 @@ function sig_paciente() {
     if (tipo_sangre==="0") {
         alert_bonita("error",titulo,"Elija el tipo de sangre paciente"); return;
     }
-    if (telefono_paciente==="") {
-        alert_bonita("error",titulo,"Ingrese telefono paciente"); return;
-    }
+    
     var data="cedula_paciente="+cedula_paciente+"&nombre_paciente="+nombre_paciente+"&sexo_paciente="+sexo_paciente+"&fecha_nacimiento="+fecha_nacimiento+"&estado_civil="+estado_civil+"&telefono_paciente="+telefono_paciente+"&tipo_sangre="+tipo_sangre
     $.ajax({
         type: "POST",
@@ -143,6 +141,7 @@ function almacenar_alergia() {
     var  dominio=localStorage.getItem("dominio")+"sistema/paciente/php/almacenar_alergias.php";
     var  titulo=localStorage.getItem("titulo");
     var cedula_paciente=$("#cedula_paciente").val();
+
     if (cedula_paciente==="") {
         alert_bonita("error",titulo,"Ingrese cedula paciente"); presentar(1);return;
     }
@@ -157,7 +156,8 @@ function almacenar_alergia() {
         success: function (response) {
              //notificacion(response)
             tabla_alergia_paciente()
-            
+             $("#gravedad").val("")
+    $("#alergias").val("")
         }
     });
 }
@@ -256,6 +256,9 @@ function tabla_antecedentes_familiar() {
     var estado_actual=$("#estado_actual").val();
     var parentesco_familiar=$("#parentesco_familiar").val();
     var nombre_familiar=$("#nombre_familiar").val();
+    if (nombre_familiar=="") {
+        nombre_familiar= parentesco_familiar
+    }
     var antecedentes_enf_familia=tipo_enfermedad
     var variable="cedula_paciente="+cedula_paciente+"&tipo_enfermedad="+tipo_enfermedad+"&fecha_dianostico="+fecha_dianostico+"&tratamiento_recibido="+tratamiento_recibido+"&estado_actual="+estado_actual+"&parentesco_familiar="+parentesco_familiar+"&nombre_familiar="+nombre_familiar+"&antecedentes_enf_familia="+antecedentes_enf_familia
    

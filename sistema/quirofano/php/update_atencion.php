@@ -15,6 +15,8 @@ $campo="*";
 $where="where id_atencion='$id_atencion' "; 
 $valor_actualizar="`id_tipo`='$id_tipo',`fecha_inicio`=curdate(),`fecha_fin`=curdate(),estado_paciente_inicio='$estado_paciente_inicio' "; 
 $consulta=consultas($tabla, $campo, $where);
+$row=$consulta->fetch();
+$cedula_medico=$row["cedula_medico"];
 $html="";
 $i=1;
 if ($consulta->rowCount()!=0) {
@@ -22,4 +24,8 @@ if ($consulta->rowCount()!=0) {
     $html="actualizada de atencion";
     update_table("$tabla", "$valor_actualizar", "$where");
 }
+$tabla="medico";
+$valor_actualizar="estado_medico='Qr'";
+$where="where cedula_medico='$cedula_medico'";
+update_table("$tabla", "$valor_actualizar", "$where");
 echo $html;

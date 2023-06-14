@@ -12,35 +12,35 @@ $fecha_actual = date("Y-m-d");
 
         <a class="nav-link navlink_t5" href="#item-5" onclick="presentar('5')">Acompañante de paciente</a>
         <a class="nav-link navlink_t6" href="#item-6" onclick="presentar('6')">Atencion</a>
- 
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">Nº Paso</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link contador_pagina" href="#">1</a>
-      </li>
 
-    </ul>
-  </nav>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">Nº Paso</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link contador_pagina" href="#">1</a>
+            </li>
+
+          </ul>
+        </nav>
 
 
-  <nav aria-label="Page navigation example mb-3 api_consulta">
-    <ul class="pagination">
+        <nav aria-label="Page navigation example mb-3 api_consulta">
+          <ul class="pagination">
 
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">Consulta</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link api" href="#">#</a>
-      </li>
-      
-    </ul>
-  </nav>
- 
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">Consulta</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link api" href="#">#</a>
+            </li>
+
+          </ul>
+        </nav>
+
       </nav>
     </nav>
   </div>
@@ -51,14 +51,14 @@ $fecha_actual = date("Y-m-d");
         <!-- Datos paciente -->
 
         <div class="form-floating mb-2">
-          <input type="text" class="form-control" id="cedula_paciente" name="cedula_paciente" placeholder="h" onchange="cedula_paciente_ft()">
+          <input type="text" class="form-control" id="cedula_paciente" name="cedula_paciente" placeholder="h" onchange="cedula_paciente_ft()" onkeypress="return  numeros(event);" onkeyup="return limitar(event,this.value,10);">
           <label for="floatingInput">Cedula Paciente <i class="cedula_not"></i></label>
 
         </div>
         <div class="row mb-2">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating">
-              <input type="text" class="form-control" id="nombre_paciente" name="nombre_paciente" placeholder="g">
+              <input type="text" class="form-control" id="nombre_paciente" name="nombre_paciente" placeholder="g" onkeypress="return letra(event);" onkeyup="return limitar(event,this.value,120);">
               <label for="floatingPassword">Nombre de Paciente</label>
             </div>
           </div>
@@ -123,7 +123,7 @@ $fecha_actual = date("Y-m-d");
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating">
-              <input type="telf" class="form-control" id="telefono_paciente" name="telefono_paciente" placeholder="h">
+              <input type="telf" class="form-control" id="telefono_paciente" name="telefono_paciente" onkeypress="return numeros(event);" onkeyup="return limitar(event,this.value,10);" placeholder="h">
               <label for="floatingInput">Telefono de Paciente</label>
             </div>
           </div>
@@ -147,10 +147,14 @@ $fecha_actual = date("Y-m-d");
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
+            <!--  -->
+
             <!-- select  -->
 
 
             <div class="form-floating">
+              <input type="text" class="form-control" id="alergias" name="alergias" placeholder="namem" onkeypress="return letranumero(event);" onkeyup="return limitar(event,this.value,100);">
+              <!-- 
               <select class="form-select" id="alergias" name="alergias" aria-label="Floating label select example">
                 <option value="Ninguna">No tiene alergia</option>
                 <option value=' Alergia al polen'> Alergia al polen</option>
@@ -203,10 +207,10 @@ $fecha_actual = date("Y-m-d");
                 <option value='  Alergia al polvo de tiza'> Alergia al polvo de tiza</option>
                 <option value='  Alergia al polvo de las hojas de té'> Alergia al polvo de las hojas de té</option>
                 <option value='  Alergia al polvo de las hojas de café'> Alergia al polvo de las hojas de café</option>
+                <option value='  Otros'> OTROS</option>
 
-
-              </select>
-              <label for="floatingSelect">Alergias</label>
+              </select> -->
+              <label for="floatingInput">Alergias</label>
             </div>
 
 
@@ -253,11 +257,11 @@ $fecha_actual = date("Y-m-d");
       <!-- alergias -->
       <div id="item-3" class="d-none">
         <!--Antecedentes de paciente  -->
-        <!-- `id_antecedentes`, `tipo_enfermedad`, `fecha_dianostico`, `tratamiento_recibido`, `estado_actual`, `parentesco_familiar`, `nombre_familiar`, `antecedentes_enf_familia`, `cedula_paciente`  -->
+
         <div class="row mb-2">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="tipo_enfermedad" name="tipo_enfermedad" placeholder="namecom">
+              <input type="text" class="form-control" id="tipo_enfermedad" name="tipo_enfermedad" placeholder="namecom" onkeypress="return letranumero(event);" onkeyup="return limitar(event,this.value,120);">
               <label for="floatingInput">Tipo de enfermedad</label>
             </div>
           </div>
@@ -271,13 +275,13 @@ $fecha_actual = date("Y-m-d");
         <div class="row mb-2">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="tratamiento_recibido" name="tratamiento_recibido" placeholder="namecom">
+              <input type="text" class="form-control" id="tratamiento_recibido" name="tratamiento_recibido" placeholder="namecom" onkeypress="return letranumero(event);" onkeyup="return limitar(event,this.value,120);">
               <label for="floatingInput">Tratamiento recibido</label>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="estado_actual" name="estado_actual" placeholder="namecom">
+              <input type="text" class="form-control" id="estado_actual" name="estado_actual" placeholder="namecom" onkeypress="return letranumero(event);" onkeyup="return limitar(event,this.value,120);">
               <label for="floatingInput">Estado de la enfermedad</label>
             </div>
           </div>
@@ -322,7 +326,7 @@ $fecha_actual = date("Y-m-d");
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="nombre_familiar" name="nombre_familiar" placeholder="name@example.com">
+              <input type="text" class="form-control" id="nombre_familiar" name="nombre_familiar" onkeypress="return letra(event);" onkeyup="return limitar(event,this.value,120);" placeholder="name@example.com">
               <label for="floatingInput">Nombre de familiar</label>
             </div>
           </div>
@@ -454,7 +458,7 @@ $fecha_actual = date("Y-m-d");
 
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating">
-              <input type="telf" class="form-control contacto" id="telefono_contacto" name="telefono_contacto" placeholder="h">
+              <input type="telf" class="form-control contacto" id="telefono_contacto" name="telefono_contacto" onkeypress="return numeros(event);" onkeyup="return limitar(event,this.value,10);" placeholder="h">
               <label for="floatingInput">Telefono </label>
             </div>
           </div>

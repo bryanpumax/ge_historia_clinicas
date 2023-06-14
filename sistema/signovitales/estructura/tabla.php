@@ -6,7 +6,7 @@
 // SELECT `id_signos`, atencion.fecha_registrada,paciente.cedula_paciente,paciente.nombre_paciente,atencion.estado_paciente_inicio, `pulso`, `presion`, `respiracion`, `temperatura` FROM `signosvitales` INNER JOIN atencion on atencion.id_atencion=signosvitales.id_atencion INNER JOIN paciente on paciente.cedula_paciente =atencion.cedula_paciente;
 $tabla="signosvitales";
 $campos=" `id_signos`, atencion.fecha_registrada,paciente.cedula_paciente,paciente.nombre_paciente,atencion.estado_paciente_inicio, `pulso`, `presion`, `respiracion`, `temperatura` ";
-$where="";
+$where="where  tipo_atencion.tipo_atencion!='Casa' and  fecha_registrada=curdate()";
 $inner="
 INNER JOIN atencion on atencion.id_atencion=signosvitales.id_atencion
 INNER JOIN paciente on paciente.cedula_paciente=atencion.cedula_paciente 

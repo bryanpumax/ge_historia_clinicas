@@ -492,3 +492,22 @@ $.ajax({
 $("#id_tipo").html(response);              }
             });
           }
+
+
+
+
+          function imprimir_receta_medica() {  
+            var dominio = localStorage.getItem("dominio") + "sistema/consultorio/php/receta_medica.php";
+            var titulo = localStorage.getItem("titulo");
+            var id_atencion = $("#id_atencion").val();
+            var   variable= "id_atencion="+id_atencion
+            window.location.href=dominio+"?"+variable
+            // $.ajax({
+            //   type: "POST",
+            //   url: dominio,
+            //   data: "id_atencion="+id_atencion,  
+            //   success: function (response) {
+            //     alert(response)
+            //   }
+            // });
+          }

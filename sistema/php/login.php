@@ -24,6 +24,8 @@ while ($row=$consulta->fetch()) {
     $rol=$row["rol"];
 }    
 $mensaje="existe";
+setcookie("nombre_cookie", "valor_cookie", time() + (24 * 3600));
+
 }else{
 $mensaje="noexiste";
 }

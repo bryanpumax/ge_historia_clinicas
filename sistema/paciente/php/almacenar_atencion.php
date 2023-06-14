@@ -13,7 +13,7 @@ $rows=$consulta->fetch();
  $tabla="atencion";
  $id_atencion="null";
 $campo="`id_atencion`, `cedula_paciente`, `cedula_medico`, `id_usuario`, `id_tipo`, `estado_paciente_inicio`, `descripcion`, `fecha_inicio`, `fecha_fin`, `fecha_registrada`";
-$where="where cedula_paciente='$cedula_paciente' and  cedula_medico='$cedula_medico'  and fecha_inicio=curdate()"; 
+$where="where cedula_paciente='$cedula_paciente' and  cedula_medico='$cedula_medico'  and fecha_inicio=curdate() and fecha_registrada=curdate()"; 
 $valor_actualizar="cedula_medico='$cedula_medico',id_usuario='$id_usuario',id_tipo='$id_tipo',estado_paciente_inicio='$estado_paciente_inicio'";
 $valor="  $id_atencion,'$cedula_paciente','$cedula_medico','$id_usuario','$id_tipo','$estado_paciente_inicio','',curdate(),curdate(),curdate()";
 $consulta=consultas($tabla, $campo, $where);

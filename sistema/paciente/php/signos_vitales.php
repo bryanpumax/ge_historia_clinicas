@@ -15,10 +15,10 @@ $id_atencion=trim($_REQUEST["id_atencion"]);
 
 $tabla="signosvitales";
 $id_signos="null";
-$campo=" `id_signos`, `id_atencion`, `pulso`, `presion`, `respiracion`, `temperatura`";
+$campo=" `id_signos`, `id_atencion`, `pulso`, `presion`, `respiracion`, `temperatura`,fecha_registrada";
 $where="where id_atencion='$id_atencion'"; 
 $valor_actualizar="pulso='$pulso',presion='$presion',respiracion='$respiracion',temperatura='$temperatura'";
-$valor="$id_signos,'$id_atencion','$pulso','$presion','$respiracion','$temperatura'";
+$valor="$id_signos,'$id_atencion','$pulso','$presion','$respiracion','$temperatura',now()";
 $consulta=consultas($tabla, $campo, $where);
 $html="";
 $i=1;

@@ -13,10 +13,11 @@ $duracion=$_REQUEST["duracion"];
 $where="where id_atencion='$id_atencion' and tratamiento='$tratamiento'";
 $consulta=consultas("$tabla","$campo","$where");
 $valor=" null, $id_atencion,'$tratamiento', '$estado_tratamiento', curdate(), '$duracion'";
-
+$accion="";
 if ($consulta->rowCount()==0) {
     # code...
     insertar("$tabla", "$campo", "$valor");
+    $accion.=insertarprueba("$tabla", "$campo", "$valor");
 }
 $consulta=consultas("$tabla","$campo","$where");
 $row=$consulta->fetch();
@@ -35,5 +36,7 @@ for ($i=0; $i <count($id_medicamento_input) ; $i++) {
      if ($consulta->rowCount()==0) {
         # code...
         insertar("$tabla", "$campo", "$valor");
+        $accion.=insertarprueba("$tabla", "$campo", "$valor");
     }
 }
+echo $accion;

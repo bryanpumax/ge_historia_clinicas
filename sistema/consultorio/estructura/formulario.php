@@ -3,6 +3,7 @@
   session_start();
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
+  $fecha_actual=DATE("Y-m-d");
   $id_atencion = $_REQUEST["id_atencion"];
   $tabla = "atencion";
   $campos = "id_atencion,atencion. cedula_paciente as cedula_paciente, atencion.cedula_medico, atencion.id_usuario,atencion.id_tipo, estado_paciente_inicio, descripcion, fecha_inicio, fecha_fin, fecha_registrada ,paciente.nombre_paciente,`paciente`.`sexo_paciente`,paciente.fecha_nacimiento,paciente.tipo_sangre,paciente.telefono_paciente,medico.nombre_medico,case when medico.estado_medico= 'Co' THEN 'Consultorio' when medico.estado_medico= 'Em' THEN 'Emergencia' when medico.estado_medico= 'Hp' THEN 'Hospitilizacion' when medico.estado_medico= 'Qr' THEN 'Quirofano' when medico.estado_medico= 'Ca' THEN 'Casa' end as estado_medico, usuario.nombre_usu,tipo_atencion.tipo_atencion
@@ -158,7 +159,7 @@ INNER JOIN tipo_atencion on tipo_atencion.id_tipo=atencion.id_tipo";
          </div>
 
          <div class="form-floating mb-3">
-           <input type="date" class="form-control" id="duracion" name="duracion" placeholder="nameexample.com">
+           <input type="date" class="form-control" id="duracion" name="duracion" placeholder="nameexample.com" min="<?=$fecha_actual?>">
            <label for="floatingInput">Duracion</label>
          </div>
          <div class="form-floating mb-3">
@@ -169,8 +170,11 @@ INNER JOIN tipo_atencion on tipo_atencion.id_tipo=atencion.id_tipo";
            <input type="text" class="form-control" id="hora_consumo" name="hora_consumo" placeholder="nameexample.com">
            <label for="floatingInput">Horario Medicamento</label>
          </div>
-
+         <button type="button" class="btn btn-primary" onclick="imprimir_receta_medica()">
+          Imprimir receta medica
+         </button>
          <!-- medicamento -->
+         
          <!-- Button trigger modal -->
          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
            Medicamento
