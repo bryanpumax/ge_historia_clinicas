@@ -1,20 +1,23 @@
 <?php
 /* 
-https://hospital.lab-mrtecks.com/sistema/consultorio/php/receta_medica.php
+https://hospital.lab-mrtecks.com/sistema/consultorio/php/receta_medica.php?id_atencion=8
 */
-$fecha=date ("mdsmh");
- session_start();
+date_default_timezone_set('America/Guayaquil');
+
+$fecha=date ("y-m-d");
+//  session_start();
  ini_set('display_errors', 1);
  ini_set('display_startup_errors', 1);   
    include "../../../assets/php_plugins/vendor/autoload.php";
-  $id_atencion=$_REQUEST["id_atencion"];
-  $_SESSION["id_atencion"]=$id_atencion;
+  $id_atencion=$_REQUEST["id_atencion"]; 
+  
   use Dompdf\Dompdf; 
 // Crea una instancia de dompdf
 $dompdf = new Dompdf(); 
 // Carga el archivo HTML
 ob_start();
 include "formato_receta.php";
+
 $html=ob_get_clean();
 // $html = file_get_contents('formato_receta.php'); 
 // Convierte el HTML a PDF

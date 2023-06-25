@@ -500,14 +500,21 @@ $("#id_tipo").html(response);              }
             var dominio = localStorage.getItem("dominio") + "sistema/consultorio/php/receta_medica.php";
             var titulo = localStorage.getItem("titulo");
             var id_atencion = $("#id_atencion").val();
-            var   variable= "id_atencion="+id_atencion
-            window.location.href=dominio+"?"+variable
-            // $.ajax({
-            //   type: "POST",
-            //   url: dominio,
-            //   data: "id_atencion="+id_atencion,  
-            //   success: function (response) {
-            //     alert(response)
-            //   }
-            // });
+            var   variable= "id_atencion="+id_atencion 
+           window.location.href=dominio+"?"+variable
+  //           $.ajax({
+  //             type: "POST",
+  //             url: dominio,
+  //             data: "id_atencion="+id_atencion,  
+  //             success: function (response) {
+  //               var ventana = window.open('', 'PRINT', 'height=400,width=600');
+  // ventana.document.write( response );
+  // ventana.document.close();
+  // ventana.focus();
+  // ventana.onload = function() {
+  //   ventana.print();
+  //   ventana.close();
+  // };
+  //             }
+  //           });
           }
