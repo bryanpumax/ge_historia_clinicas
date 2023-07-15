@@ -30,7 +30,7 @@ $html='
     <th scope="col">Paciente</th>
     <th scope="col">Estado paciente</th> 
     <th scope="col">Nivel atencion</th>
-    <th scope="col">Fecha</th>
+    <th scope="col">Fecha-Consultorio</th>
     <th scope="col">Accion</th>
   </tr>
 </thead>

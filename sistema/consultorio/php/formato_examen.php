@@ -11603,15 +11603,16 @@ if ($mes < $mes_paciente) {
  
 //SELECT Prueba_medica.id_pr_medica,Prueba_medica.prueba_medica,(SELECT CASE WHEN detalle_examen.id_pr_medica !='null' then 'checked' END from detalle_examen WHERE detalle_examen.id_examen=4 and Prueba_medica.id_pr_medica=detalle_examen.id_det_examen) as correctas FROM `Prueba_medica` ORDER BY `correctas` DESC;
 $tabla="Prueba_medica";
-$campos="Prueba_medica.id_pr_medica,Prueba_medica.prueba_medica,(SELECT CASE WHEN detalle_examen.id_pr_medica !='null' then 'checked' END from detalle_examen WHERE detalle_examen.id_examen=$id_examen and Prueba_medica.id_pr_medica=detalle_examen.id_det_examen) as correctas ";
+$campos="Prueba_medica.id_pr_medica,Prueba_medica.prueba_medica ";
 $inner='';
 $where = " ORDER BY `Prueba_medica`.`id_pr_medica` ASC";
-$consulta = consultas("$tabla", "$campos", "$inner $where");
+$consulta = consultas("$tabla", "$campos", "$inner $where"); 
  $arry_prueba_checked=array();
  array_push($arry_prueba_checked,"blanco");
 while ($row=$consulta->fetch()) {
     $id_pr_medica=$row["id_pr_medica"];
-   $correctas=$row["correctas"];
+   $correctas=correcta_check_id_pr_medica($id_examen,$id_pr_medica);
+
    array_push($arry_prueba_checked,$correctas);
 }
  
@@ -11633,7 +11634,18 @@ $qrcode = new QRCode($options);
 $image = $qrcode->render($text);
 
 // Mostrar el código QR
- 
+ function correcta_check_id_pr_medica($id_examen,$id_pr_medica)
+ {
+    //  (SELECT from detalle_examen ) as correctas
+    $tabla="detalle_examen";
+$campos="*";
+$inner='';
+$where = " WHERE detalle_examen.id_examen=$id_examen and detalle_examen.id_pr_medica='$id_pr_medica'";
+$consulta = consultas("$tabla", "$campos", " $where");
+//  return $consulta;
+  return ($consulta->rowCount()==0) ? "" : "checked" ;
+  
+ }
 ?>
 
   

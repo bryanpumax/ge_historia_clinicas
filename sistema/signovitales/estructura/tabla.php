@@ -1,8 +1,7 @@
 <?php
  include "../../conexion/interacion.php";
  session_start();
- ini_set('display_errors', 1);
- ini_set('display_startup_errors', 1); 
+
 // SELECT `id_signos`, atencion.fecha_registrada,paciente.cedula_paciente,paciente.nombre_paciente,atencion.estado_paciente_inicio, `pulso`, `presion`, `respiracion`, `temperatura` FROM `signosvitales` INNER JOIN atencion on atencion.id_atencion=signosvitales.id_atencion INNER JOIN paciente on paciente.cedula_paciente =atencion.cedula_paciente;
 $tabla="signosvitales";
 $campos=" `id_signos`, atencion.fecha_registrada,paciente.cedula_paciente,paciente.nombre_paciente,atencion.estado_paciente_inicio, `pulso`, `presion`, `respiracion`, `temperatura` ";

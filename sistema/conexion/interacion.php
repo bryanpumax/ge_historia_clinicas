@@ -89,7 +89,7 @@ function seguridad($texto){
     return $texto;
     }
     function texto_extraño($texto){
-        $texto=strtoupper($texto);
+        $texto=($texto);
     $texto=str_replace("#","",$texto);
     $texto=str_replace("=","",$texto);
     $texto=str_replace("'","",$texto);
@@ -101,11 +101,18 @@ function seguridad($texto){
     $texto=str_replace("DELETE","",$texto);
     $texto=str_replace("UPDATE","",$texto);
     $texto=str_replace("UPDATE","",$texto);
+    $texto=str_replace("select","",$texto);
+    $texto=str_replace("delete","",$texto);
+    $texto=str_replace("update","",$texto);
+    $texto=str_replace("update","",$texto);
     $texto=str_replace("DROP","",$texto);
     $texto=str_replace("ORDER","",$texto);
     $texto=str_replace("BY","",$texto);
     $texto=str_replace("*","",$texto);
     $texto=str_replace("-","",$texto);
+    $texto=str_replace("drop","",$texto);
+    $texto=str_replace("order","",$texto);
+    $texto=str_replace("by","",$texto);
     $texto=str_replace("+","",$texto);
     $texto=str_replace("?","",$texto);
     $texto=str_replace("|","",$texto);
@@ -113,6 +120,7 @@ function seguridad($texto){
     $texto=str_replace("COUNT","",$texto);
     $texto=str_replace("(","",$texto);
     $texto=str_replace(")","",$texto);
+    $texto=str_replace("count","",$texto);
     
     return $texto;
     

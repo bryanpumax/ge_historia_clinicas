@@ -18,3 +18,5 @@ $dominio='https://hospital.lab-mrtecks.com/';
 <script src="<?=$dominio?>assets/datatables/Buttons-2.3.6/js/dataTables.buttons.js"></script>
 <script src="<?=$dominio?>assets/datatables/Buttons-2.3.6/js/buttons.bootstrap5.js"></script>
 <script src="<?=$dominio?>assets/datatables/Buttons-2.3.6/js/buttons.html5.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

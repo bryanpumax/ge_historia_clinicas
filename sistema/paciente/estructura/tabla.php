@@ -13,7 +13,7 @@ when  medico.estado_medico= 'Qr' THEN 'Quirofano'
 when  medico.estado_medico= 'Ca' THEN 'Casa'
 end  as estado_medico,
 usuario.nombre_usu,tipo_atencion.tipo_atencion";
-$where="where  tipo_atencion.tipo_atencion!='Casa'";
+$where="where  tipo_atencion.tipo_atencion!='Casa'  and  fecha_registrada=curdate()";
 $inner="
  INNER JOIN paciente on paciente.cedula_paciente=atencion.cedula_paciente
  INNER JOIN medico on medico.cedula_medico=atencion.cedula_medico

@@ -1,6 +1,7 @@
 <?php
 include "sistema/conexion/interacion.php";
 $cedula=$_REQUEST["cedula"];
+$dominio='https://hospital.lab-mrtecks.com/';
 $dominio2='https://hospital.lab-mrtecks.com/sistema/php/labqr.php';
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -11,11 +12,12 @@ $tabla = "examen";
 $campos = " atencion.cedula_paciente,examen.descripcion_examen,examen.estado,examen.id_examen,paciente.nombre_paciente 
     ";
 $inner = " inner JOIN atencion on atencion.id_atencion=examen.id_atencion INNER JOIN paciente on paciente.cedula_paciente=atencion.cedula_paciente";
-$where = " WHERE atencion.cedula_paciente='$cedula' and examen.estado='Activo'";
+$where = " WHERE atencion.cedula_paciente='$cedula' and examen.estado in ('Activo','Inactivo')";
 $consulta = consultas("$tabla", "$campos", "$inner $where");
 $row=$consulta->fetch();
 $nombre_paciente=$row["nombre_paciente"];
-$id_examen=codigo($row["id_examen"]);
+$codigo=codigo($row["id_examen"]);
+$id_examen=($row["id_examen"]);
 
 //  SELECT atencion.cedula_paciente,detalle_examen.id_det_examen,detalle_examen.id_examen,examen.descripcion_examen,examen.estado,Prueba_medica.prueba_medica from examen
 // inner JOIN atencion on atencion.id_atencion=examen.id_atencion
@@ -30,11 +32,12 @@ $inner .=" INNER JOIN Prueba_medica on Prueba_medica.id_pr_medica=detalle_examen
 $where = " WHERE atencion.cedula_paciente='$cedula' and examen.estado='Activo'";
 $consulta = consultas("$tabla", "$campos", "$inner $where");
 $con=$consulta->rowcount();
+
 $html="";$i=1;
 while ($row=$consulta->fetch()) {
   
     $html.='<div class="form-floating mb-1 col-6">
-    <input type="text" class="form-control" id="'.$i.'" name="'.$i.'" placeholder="name@example.com" data-detalle="'.$row["id_det_examen"].'">
+    <input type="text" class="form-control" id="'.$i.'" name="'.$i.'" placeholder="name@example.com" data-detalle="'.$row["id_det_examen"].'" value="'.valor_input($row["id_det_examen"]).'">
     <label for="floatingInput">'.$row["prueba_medica"].'</label>
   </div>';
   $i++;
@@ -49,9 +52,19 @@ while ($row=$consulta->fetch()) {
   </div>
 </nav>
 <div class="card">
-Codigo examen <?=$id_examen?><br>
+Codigo examen <?=$codigo?><br>
 Nombre paciente <?=$nombre_paciente?> <br>
-
+<?php
+if ($con==0) {
+  # code...
+  ?>
+<div class="row">
+ El examen  se  encuentra  inactivo quieres  habilitar llamar  clinica Santa Lucia
+</div>
+  <?php
+  return;
+}
+?>
 <div class="row">
 <?=$html?>
 </div>
@@ -67,13 +80,23 @@ $numeroConCeros = str_pad($var, $numero, "0", STR_PAD_LEFT);
 return $numeroConCeros;
    
 }
+function valor_input($id_det_examen)
+{
+  $tabla = "resultado";
+  $campos = " valor"; 
+  $where = " WHERE id_det_examen='$id_det_examen'";
+  $consulta = consultas("$tabla", "$campos", " $where");
+$row=$consulta->fetch();
+return $row["valor"];
+}
 include("./assets/estructura_fin.php");
 ?>
 <script>
 
   function guardar_resultados() {
     var canti=$(".form-control").length;
-    var variable="canti="+canti;
+    var id_examen="<?=$id_examen?>" ;
+    var variable="id_examen="+id_examen+"&canti="+canti;
 for (let index = 1;index <= canti ; index++){
  variable+="&iddetalle"+index+"="+$("#"+index).data("detalle")+"&value"+index+"="+$("#"+index).val();;
     }
@@ -82,7 +105,11 @@ for (let index = 1;index <= canti ; index++){
   url: "<?=$dominio2?>",
   data: variable, 
   success: function (response) {
-    console.log(response)
+    alert_bonita("success","Clinica Santa Lucia","Se registro correctamente");
+    setInterval(() => {
+      location.href="<?=$dominio?>"
+    }, 8000);
+   
   }
  });
   }

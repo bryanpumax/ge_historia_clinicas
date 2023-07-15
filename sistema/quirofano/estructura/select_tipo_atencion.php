@@ -9,7 +9,7 @@ $id_tipo=$_REQUEST["id_tipo"];
 $tabla="tipo_atencion";
 $campo="id_tipo, tipo_atencion";
 $inner="";
-$where="where id_tipo!='$id_tipo'"; 
+$where=" "; 
 $consulta=consultas($tabla, $campo, $where);
 $html='  
 

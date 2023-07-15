@@ -51,14 +51,14 @@ $fecha_actual = date("Y-m-d");
         <!-- Datos paciente -->
 
         <div class="form-floating mb-2">
-          <input type="text" class="form-control" id="cedula_paciente" name="cedula_paciente" placeholder="h" onchange="cedula_paciente_ft()" onkeypress="return  numeros(event);" onkeyup="return limitar(event,this.value,10);">
+          <input type="text" class="form-control" id="cedula_paciente" name="cedula_paciente" placeholder="h" onchange="cedula_paciente_ft()" onkeypress="return  numeros(event);" onkeyup="return limitar(event,this.value,10);" maxlength="10">
           <label for="floatingInput">Cedula Paciente <i class="cedula_not"></i></label>
 
         </div>
         <div class="row mb-2">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating">
-              <input type="text" class="form-control" id="nombre_paciente" name="nombre_paciente" placeholder="g" onkeypress="return letra(event);" onkeyup="return limitar(event,this.value,120);">
+              <input type="text" class="form-control" id="nombre_paciente" name="nombre_paciente" placeholder="g" onkeypress="return letra(event);" onkeyup="return limitar(event,this.value,120);" maxlength="120">
               <label for="floatingPassword">Nombre de Paciente</label>
             </div>
           </div>
@@ -123,7 +123,7 @@ $fecha_actual = date("Y-m-d");
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating">
-              <input type="telf" class="form-control" id="telefono_paciente" name="telefono_paciente" onkeypress="return numeros(event);" onkeyup="return limitar(event,this.value,10);" placeholder="h">
+              <input type="telf" class="form-control" id="telefono_paciente" name="telefono_paciente" onkeypress="return numeros(event);" onkeyup="return limitar(event,this.value,10);" maxlength="10" placeholder="h">
               <label for="floatingInput">Telefono de Paciente</label>
             </div>
           </div>
@@ -154,62 +154,7 @@ $fecha_actual = date("Y-m-d");
 
             <div class="form-floating">
               <input type="text" class="form-control" id="alergias" name="alergias" placeholder="namem" onkeypress="return letranumero(event);" onkeyup="return limitar(event,this.value,100);">
-              <!-- 
-              <select class="form-select" id="alergias" name="alergias" aria-label="Floating label select example">
-                <option value="Ninguna">No tiene alergia</option>
-                <option value=' Alergia al polen'> Alergia al polen</option>
-                <option value='  Alergia a los ácaros del polvo'> Alergia a los ácaros del polvo</option>
-                <option value='  Alergia a los alimentos (como cacahuetes leche huevos mariscos etc.)'> Alergia a los alimentos (como cacahuetes leche huevos mariscos etc.)</option>
-                <option value='  Alergia al látex'> Alergia al látex</option>
-                <option value='  Alergia a las picaduras de insectos'> Alergia a las picaduras de insectos</option>
-                <option value='  Alergia a los medicamentos (como la penicilina o la aspirina)'> Alergia a los medicamentos (como la penicilina o la aspirina)</option>
-                <option value='  Alergia al pelo de animales (como perros o gatos)'> Alergia al pelo de animales (como perros o gatos)</option>
-                <option value='  Alergia al moho'> Alergia al moho</option>
-                <option value='  Alergia al sol'> Alergia al sol</option>
-                <option value='  Alergia al frío'> Alergia al frío</option>
-                <option value='  Alergia al sudor'> Alergia al sudor</option>
-                <option value='  Alergia al agua (como la urticaria acuagénica)'> Alergia al agua (como la urticaria acuagénica)</option>
-                <option value='  Alergia a los productos químicos (como los detergentes o los cosméticos)'> Alergia a los productos químicos (como los detergentes o los cosméticos)</option>
-                <option value='  Alergia a la leche de vaca'> Alergia a la leche de vaca</option>
-                <option value='  Alergia al trigo'> Alergia al trigo</option>
-                <option value='  Alergia al maíz'> Alergia al maíz</option>
-                <option value='  Alergia al pescado'> Alergia al pescado</option>
-                <option value='  Alergia a la soja'> Alergia a la soja</option>
-                <option value='  Alergia al cacahuete'> Alergia al cacahuete</option>
-                <option value='  Alergia al pollo'> Alergia al pollo</option>
-                <option value='  Alergia al huevo'> Alergia al huevo</option>
-                <option value='  Alergia a la carne de res'> Alergia a la carne de res</option>
-                <option value='  Alergia al sésamo'> Alergia al sésamo</option>
-                <option value='  Alergia al apio'> Alergia al apio</option>
-                <option value='  Alergia a la mostaza'> Alergia a la mostaza</option>
-                <option value='  Alergia a los frutos secos (como las nueces almendras avellanas etc.)'> Alergia a los frutos secos (como las nueces almendras avellanas etc.)</option>
-                <option value='  Alergia a la fruta fresca (como la manzana melocotón etc.)'> Alergia a la fruta fresca (como la manzana melocotón etc.)</option>
-                <option value='  Alergia al kiwi'> Alergia al kiwi</option>
-                <option value='  Alergia al melón'> Alergia al melón</option>
-                <option value='  Alergia a las fresas'> Alergia a las fresas</option>
-                <option value='  Alergia a las bayas (como los arándanos las moras etc.)'> Alergia a las bayas (como los arándanos las moras etc.)</option>
-                <option value='  Alergia al mango'> Alergia al mango</option>
-                <option value='  Alergia a la piña'> Alergia a la piña</option>
-                <option value='  Alergia a la pera'> Alergia a la pera</option>
-                <option value='  Alergia al melocotón'> Alergia al melocotón</option>
-                <option value='  Alergia a la cereza'> Alergia a la cereza</option>
-                <option value='  Alergia a la nuez de macadamia'> Alergia a la nuez de macadamia</option>
-                <option value='  Alergia al anacardo'> Alergia al anacardo</option>
-                <option value='  Alergia al pistacho'> Alergia al pistacho</option>
-                <option value='  Alergia al castañas'> Alergia al castañas</option>
-                <option value='  Alergia al chocolate'> Alergia al chocolate</option>
-                <option value='  Alergia al polvo de talco'> Alergia al polvo de talco</option>
-                <option value='  Alergia a la lana'> Alergia a la lana</option>
-                <option value='  Alergia a los tintes para el cabello'> Alergia a los tintes para el cabello</option>
-                <option value='  Alergia al níquel (como en joyas o botones)'> Alergia al níquel (como en joyas o botones)</option>
-                <option value='  Alergia al cobalto'> Alergia al cobalto</option>
-                <option value='  Alergia a la goma de mascar'> Alergia a la goma de mascar</option>
-                <option value='  Alergia al polvo de tiza'> Alergia al polvo de tiza</option>
-                <option value='  Alergia al polvo de las hojas de té'> Alergia al polvo de las hojas de té</option>
-                <option value='  Alergia al polvo de las hojas de café'> Alergia al polvo de las hojas de café</option>
-                <option value='  Otros'> OTROS</option>
-
-              </select> -->
+            
               <label for="floatingInput">Alergias</label>
             </div>
 
@@ -275,7 +220,7 @@ $fecha_actual = date("Y-m-d");
         <div class="row mb-2">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="tratamiento_recibido" name="tratamiento_recibido" placeholder="namecom" onkeypress="return letranumero(event);" onkeyup="return limitar(event,this.value,120);">
+              <input type="text" class="form-control" id="tratamiento_recibido" name="tratamiento_recibido" placeholder="namecom" onkeypress="return letranumero(event);" onkeyup="return limitar(event,this.value,120);" maxlength="120">
               <label for="floatingInput">Tratamiento recibido</label>
             </div>
           </div>
@@ -326,7 +271,7 @@ $fecha_actual = date("Y-m-d");
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="nombre_familiar" name="nombre_familiar" onkeypress="return letra(event);" onkeyup="return limitar(event,this.value,120);" placeholder="name@example.com">
+              <input type="text" class="form-control" id="nombre_familiar" name="nombre_familiar" onkeypress="return letra(event);" onkeyup="return limitar(event,this.value,120);" maxlength="120" placeholder="name@example.com">
               <label for="floatingInput">Nombre de familiar</label>
             </div>
           </div>
@@ -400,14 +345,14 @@ $fecha_actual = date("Y-m-d");
         <!-- Contacto -->
 
         <div class="form-floating mb-2">
-          <input type="text" class="form-control contacto" id="cedula_contacto" name="cedula_contacto" placeholder="h" onchange="cedula_contacto_ft()">
+          <input type="text" class="form-control contacto" id="cedula_contacto" name="cedula_contacto" placeholder="h" onkeypress="return numeros(event);" onchange="cedula_contacto_ft()" maxlength="10">
           <label for="floatingInput">Cedula contacto <i class="cedula_not2"></i></label>
 
         </div>
         <div class="row mb-2">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating">
-              <input type="text" class="form-control contacto" id="nombre_contacto" name="nombre_contacto" placeholder="g">
+              <input type="text" class="form-control contacto" id="nombre_contacto" name="nombre_contacto" placeholder="g" onkeypress="return letra(event);">
               <label for="floatingPassword">Nombre de contacto</label>
             </div>
           </div>
@@ -458,7 +403,7 @@ $fecha_actual = date("Y-m-d");
 
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-floating">
-              <input type="telf" class="form-control contacto" id="telefono_contacto" name="telefono_contacto" onkeypress="return numeros(event);" onkeyup="return limitar(event,this.value,10);" placeholder="h">
+              <input type="telf" class="form-control contacto" id="telefono_contacto" name="telefono_contacto" onkeypress="return numeros(event);" onkeyup="return limitar(event,this.value,10);" maxlength="10" placeholder="h">
               <label for="floatingInput">Telefono </label>
             </div>
           </div>

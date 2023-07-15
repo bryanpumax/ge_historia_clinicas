@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    menu()
+    menu();indices()
 });
 function menu() {
   
@@ -44,4 +44,15 @@ $.ajax({
 });
 
 
+    }
+    function indices() {
+        var  dominio=localStorage.getItem("dominio")
+        $.ajax({
+            type: "POST",
+            url: dominio+"sistema/componente/consultas/indices.php",
+            data: "",
+            success: function (response) {
+                $(".mostrar_indices").html(response);
+            }
+        });
     }

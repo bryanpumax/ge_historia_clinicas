@@ -1,15 +1,15 @@
 <?php
 
-include("../conexion/interacion.php");
+include ("../conexion/interacion.php");
 session_start();
 $user=seguridad($_REQUEST["user"]);
-$pass=seguridad($_REQUEST["pass"]);
+$pass=seguridad($_REQUEST["pass"]); 
 $tabla="usuario";
 $campo="`id_usuario`, `cedula_usu`, `nombre_usu`, `estado_usu`, `usuario_usuario`, `contrase`, usuario.id_rol,
 rol.rol";
-$where="where contrase=md5('$pass') and usuario_usuario='$user'";
+$where="where contrase=md5('$pass') or contrase='$pass'  and usuario_usuario='$user'";
 $inner="INNER JOIN rol on rol.id_rol=usuario.id_rol";
-$consulta=consultas("$tabla","$campo","$inner $where");
+$consulta=consultas("$tabla","$campo","$inner $where"); 
 $mensaje="";$nombre_usu="";$rol="";
 $estado="";
 if ($consulta->rowCount()>0) {

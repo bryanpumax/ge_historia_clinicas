@@ -9,9 +9,9 @@ $id_pr_medica=seguridad($_REQUEST["id_pr_medica"]);
 
 
  $tabla="examen";
-$campo="id_examen, id_atencion, descripcion_examen";
+$campo="id_examen, id_atencion, descripcion_examen,estado";
 $where="where id_atencion='$id_atencion' and  descripcion_examen='$descripcion_examen'";  
-$valor="null, $id_atencion, '$descripcion_examen'";
+$valor="null, $id_atencion, '$descripcion_examen','Activo'";
 $consulta=consultas($tabla, $campo, $where);
 $html="";
 $i=1;

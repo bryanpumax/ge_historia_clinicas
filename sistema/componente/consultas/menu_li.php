@@ -23,8 +23,8 @@ while ($row=$consulta->fetch()) {
     $menu=$row["menu"];
     $archivo=$row["archivo"];
     $parametros="'$menu','$archivo'";
-    $html.=' <li class="nav-item">
-    <button class="nav-link " onclick="menu_li('.$parametros.')">
+    $html.=' <li   class="nav-item">
+    <button class="nav-link text-white" onclick="menu_li('.$parametros.')">
     
     '.$row["menu"].'
     <span class="badge text-bg-light"><i class="'.$row["icono"].'"  ></i></span>

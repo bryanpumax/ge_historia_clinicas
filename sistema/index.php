@@ -18,37 +18,35 @@ if (!isset($_SESSION["id_rol"]) ) {
 } 
 ?>
 <div class="container-fluid">
-<div class="mb-5" >
-     <?php 
+  <div class="mb-5">
+  <?php 
      include("./componente/menu.php");
      
      ?>
-</div>
-<hr>
-    <div class="row mt-5">
-
-<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
-
-<div class="card ">
-  <div class="card-header ">
-  <h2 class="titulo">Inicio</h2>
   </div>
-  <div class="card-body contenido ">
- 
- <div class="mostrar_doctores"></div>
-    <div class="cantidad_personas_area"></div>
-    <div class="cantidad_personas_casa_hoy"></div>
+  <hr>
+  <div class="row mt-5">
+
+    <div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
+
+      <div class="card ">
+        <div class="card-header ">
+          <h2 class="titulo">Inicio</h2>
+        </div>
+        <div class="card-body contenido ">
+
+          <div class="mostrar_indices"></div> 
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
- 
-</div>
 
 </div>
-    
-</div>
-
- </div>
-
 <?php
 include("../assets/estructura_fin.php");
 ?>
- <script src="<?=$dominio?>/sistema/comportamiento.js"></script>
+
+<script src="<?= $dominio ?>/sistema/comportamiento.js"></script>

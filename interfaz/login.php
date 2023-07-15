@@ -1,7 +1,6 @@
 <?php
 session_start();
 include("../assets/estructura_inicio.php");
-include("./componentes/header_simple.php");
 $dominio='https://hospital.lab-mrtecks.com/';
 $titulo="Clinica Santa Lucia";
 $dominio2='https://hospital.lab-mrtecks.com/sistema';
@@ -18,13 +17,17 @@ if ($_SESSION["id_rol"]=="" ) {
   ';
 }
 ?>
+<style>
+  body{
+    background-color: #385995;
+  }
+</style>
+<img src="<?=$dominio?>assets/multimedia/logo.png"  class="" style="margin-left: 578px !important;" alt="...">
 
-
-
-<div class="card text-center offset-md-4 col-xs-12 col-lg-6 col-md-6 col-dm-6"  >
-  <img src="<?=$dominio?>assets/multimedia/logo.png"  class="card-img-top w-25 mx-auto  " alt="...">
+<div class="card mt-4 mx-auto col-xs-12 col-lg-6 col-md-6 col-dm-6"  >
+ 
   <div class="card-body">
-    <h5 class="card-title">Login</h5>
+    <h5 class="card-title text-center">INGRESO AL SISTEMA</h5>
    
     <div class="form-floating mb-3">
   <input type="email" class="form-control" id="user" name="user" placeholder="name@example.com">

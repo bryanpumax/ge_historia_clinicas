@@ -52,8 +52,7 @@ INNER JOIN tipo_atencion on tipo_atencion.id_tipo=atencion.id_tipo";
          <a class="nav-link navlink_t3 " href="#item-3" onclick="presentar('3'); generar_tbl_medicamento();mostrar_tbl_tratamiento();select_id_tipo('<?=$id_tipo?>');">Tratamiento</a>
          <a class="nav-link navlink_t4 " href="#item-4" onclick="presentar('4'); generar_tbl_medicamento();mostrar_tbl_tratamiento();select_id_tipo('<?=$id_tipo?>');">Examenes</a>
          <a class="nav-link navlink_t5 " href="#item-5" onclick="presentar('5'); generar_tbl_medicamento();mostrar_tbl_tratamiento();select_id_tipo('<?=$id_tipo?>');">Estado paciente</a>
-         <a class="nav-link " href="#item-1" onclick="formulario_medico('<?= $id_atencion ?>')">Actualizar</a>
-
+      
        </nav>
      </nav>
    </div>
@@ -249,6 +248,9 @@ INNER JOIN tipo_atencion on tipo_atencion.id_tipo=atencion.id_tipo";
          <div class="row mb-3 mt-3">
            <div class="col">
              <button type="button" class="btn btn-outline-primary" onclick="presentar('3')">Atras</button>
+           </div>
+           <div class="col">
+             <button type="button" class="btn btn-outline-primary" onclick="imprimir_examen()">Imprimir examen</button>
            </div>
            <div class="col">
              <button type="button" class="btn btn-outline-primary" onclick="guardar_examen()">Guardar examen</button>
