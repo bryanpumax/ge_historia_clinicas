@@ -7,7 +7,7 @@ $pass=seguridad($_REQUEST["pass"]);
 $tabla="usuario";
 $campo="`id_usuario`, `cedula_usu`, `nombre_usu`, `estado_usu`, `usuario_usuario`, `contrase`, usuario.id_rol,
 rol.rol";
-$where="where contrase=md5('$pass') or contrase='$pass'  and usuario_usuario='$user'";
+$where="where contrase=md5('$pass') or contrase='$pass'  and usuario_usuario='$user' and estado_usu!='D'";
 $inner="INNER JOIN rol on rol.id_rol=usuario.id_rol";
 $consulta=consultas("$tabla","$campo","$inner $where"); 
 $mensaje="";$nombre_usu="";$rol="";
@@ -33,7 +33,10 @@ if ($mensaje=="noexiste") {
     # code...
     session_destroy();
 }
-
+if ($estado=="D") {
+    # code...
+    $mensaje="noexiste";session_destroy();
+}
 $visor_array = array();
 array_push($visor_array, array(  "estado"=>$estado,"mensaje"=>$mensaje,"nombre"=>$nombre_usu ,"rol"=>$rol));
  

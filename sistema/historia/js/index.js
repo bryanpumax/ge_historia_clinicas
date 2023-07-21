@@ -3,12 +3,12 @@ $(document).ready(function () {
 });
 
 function tabla_paciente() {
-    var  dominio=localStorage.getItem("dominio")+"sistema/emergencia/estructura/tabla.php";
+    var  dominio=localStorage.getItem("dominio")+"sistema/historia/estructura/tabla.php";
     var  titulo=localStorage.getItem("titulo");
-    $(".titulo").html("Emergencia");
     $(".nuevo_btn").removeClass("d-none");
     $(".consulta").html("");
     $(".formulario").html("");
+    $(".titulo").html("Historial clinico");
     $.ajax({
         type: "POST",
         url:dominio,
@@ -57,40 +57,4 @@ function tabla_paciente() {
     });
 
 }
-
-function vitales(parametro){
-    var  dominio=localStorage.getItem("dominio")+"sistema/emergencia/estructura/formulario_vital.php";
-    var  titulo=localStorage.getItem("titulo");
-    var variable="id_atencion="+parametro
-    $(".nuevo_btn").addClass("d-none");
-    $(".consulta").html("");
-    $(".formulario").html("");
-    $(".titulo").html("Emergencia-Signos vitales de paciente seleccionado"); 
-$.ajax({
-    type: "POST",
-    url: dominio,
-    data: variable,
-    
-    success: function (response) {
-        $(".formulario").html(response);
-    }
-});
-}
-function vital() { 
-    var pulso=$("#pulso").val();
-    var presion= $("#presion").val();
-     let respiracion=$("#respiracion").val();
-     let temperatura=$("#temperatura").val();
-     var id_atencion=$("#id_atencion").val();
-var variable="pulso="+pulso+"&presion="+presion+"&respiracion="+respiracion+"&temperatura="+temperatura+"&id_atencion="+id_atencion
-var  dominio=localStorage.getItem("dominio")+"sistema/emergencia/php/signos_vitales.php";
-$.ajax({
-    type: "POST",
-    url: dominio,
-    data: variable,
-    success: function (response) {
-       tabla_paciente()
-    }
-});
-
- }
+ 

@@ -2,7 +2,7 @@
   <div class="col-lg-6 col-sm-6 col-dm-6">
     <div class="form-floating mb-3">
       <input type="text" class="form-control" id="cedula_medico" name="cedula_medico" placeholder="namecom"
-      onkeypress="return  numeros(event);" onkeyup="return limitar(event,this.value,10);">
+      onkeypress="return  numeros(event);" onkeyup="return limitar(event,this.value,10);" maxlength="10">
       <label for="floatingInput">Cedula </label>
     </div>
   </div>
@@ -30,7 +30,7 @@
   <div class="col-lg-6 col-sm-6 col-dm-6">
     <div class="form-floating mb-3">
       <input type="text" class="form-control" id="telefono_medico" name="telefono_medico" placeholder="namecom"
-      onkeypress="return  numeros(event);" onkeyup="return limitar(event,this.value,10);">
+      onkeypress="return  numeros(event);" onkeyup="return limitar(event,this.value,10);" maxlength="10">
       <label for="floatingInput">Telefono </label>
     </div>
   </div>

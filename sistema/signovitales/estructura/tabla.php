@@ -1,8 +1,7 @@
 <?php
  include "../../conexion/interacion.php";
  session_start();
-
-// SELECT `id_signos`, atencion.fecha_registrada,paciente.cedula_paciente,paciente.nombre_paciente,atencion.estado_paciente_inicio, `pulso`, `presion`, `respiracion`, `temperatura` FROM `signosvitales` INNER JOIN atencion on atencion.id_atencion=signosvitales.id_atencion INNER JOIN paciente on paciente.cedula_paciente =atencion.cedula_paciente;
+ 
 $tabla="signosvitales";
 $campos=" `id_signos`, atencion.fecha_registrada,paciente.cedula_paciente,paciente.nombre_paciente,atencion.estado_paciente_inicio, `pulso`, `presion`, `respiracion`, `temperatura` ";
 $where="where  tipo_atencion.tipo_atencion!='Casa' and  fecha_registrada=curdate()";
@@ -33,9 +32,7 @@ $html='
 ';
 $i=1; 
 while ($row=$consulta->fetch()) {
-    // $button='<button onclick="vitales(\''.$row["id_atencion"].'\')" title="Signo Vitales">
-    // <i class="fa-solid fa-heart"></i>
-    // </button>';
+ 
     $button="";
 $html.='<tr>
 

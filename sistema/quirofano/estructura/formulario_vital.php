@@ -25,16 +25,16 @@ $temperatura = $row["temperatura"];
     <div class="card-body">
         <div class="row">
         
-            <div class="col-lg-6 col-sm-6 col-md-6 ">
+            <div class="col-lg-1 col-sm-1 col-md-1 ">
              
 
                 <input type="hidden" name="id_atencion" id="id_atencion" value="<?= $id_atencion ?>">
                 <div class="row">
-                <button type="button" class="btn btn-outline-danger" onclick="tabla_paciente()">Cancelar</button> 
+                <button type="button" class="btn btn-outline-danger" onclick="tabla_paciente()">Regresar</button> 
                 </div>
                
             </div>
-            <div class="col-lg-6 col-sm-6 col-md-6 tabla_vital_antencion">
+            <div class="col-lg-11 col-sm-11 col-md-11 tabla_vital_antencion">
 
 </div>
         </div>

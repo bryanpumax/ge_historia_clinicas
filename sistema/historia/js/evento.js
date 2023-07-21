@@ -146,7 +146,7 @@ function validar_usuario() {
     var variable={ usuario_usuario};
     $.ajax({
         type: "POST",
-        url: dominio+"sistema/medico/php/consultar_usuario.php",
+        url: dominio+"sistema/historia/php/consultar_usuario.php",
         data: variable,
         success: function (response) {
       

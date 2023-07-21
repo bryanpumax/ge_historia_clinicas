@@ -76,8 +76,7 @@ $.ajax({
   data: variable,  
   dataType: "json",
   success: function (response) {
-var responses=response[0]
-{
+var responses=response[0] 
   var estado=responses.estado
   var mensaje=responses.mensaje
   var nombre=responses.nombre
@@ -98,7 +97,7 @@ var responses=response[0]
         location.href="<?=$dominio?>"
       }, 10000);
       break;
-   }
+   
   }
 }
 });

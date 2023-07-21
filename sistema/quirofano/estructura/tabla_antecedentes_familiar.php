@@ -7,7 +7,7 @@ $campo=" `id_antecedentes`, `tipo_enfermedad`, `fecha_dianostico`, `tratamiento_
 $where="where cedula_paciente='$cedula_paciente'"; 
 $consulta=consultas($tabla, $campo, $where);
 $html='
-<button type="button" class="btn btn-outline-danger" onclick="tabla_paciente()">Cancelar</button>
+<button type="button" class="btn btn-outline-danger" onclick="tabla_paciente()">Regresar</button>
 <table class="table table_antecedentes_paciente ">
 <thead>
   <tr>

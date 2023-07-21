@@ -53,6 +53,7 @@ function almacenar() {
         url: dominio+"sistema/enfermero/php/almacenar.php",
         data: variable,
         success: function (response) {
+            alert_bonita("warning",titulo,response);
             tabla_paciente()
 
         }

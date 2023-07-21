@@ -40,7 +40,7 @@ $temperatura=$row["temperatura"];
 
         <input type="hidden" name="id_atencion" id="id_atencion" value="<?=$id_atencion?>">
         <div class="offset-lg-9 offset-sm-9 offset-md-9 ">
-        <button type="button" class="btn btn-outline-danger" onclick="tabla_paciente()">Cancelar</button>
+        <button type="button" class="btn btn-outline-danger" onclick="tabla_paciente()">Regresar</button>
             <button type="button" class="btn btn-outline-primary" onclick="vital()">Guardar </button>
         </div>
 

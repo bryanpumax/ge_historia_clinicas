@@ -45,8 +45,14 @@ function almacenar() {
     if (id_especialidad==="0") {alert_bonita("error",titulo,"Seleccione la especialidad Dr");return;}
     var usuario_usuario=  $("#usuario_usuario").val();
     if (usuario_usuario==="") {alert_bonita("error",titulo,"Ingrese usuario Dr");return;}
+    
+    if (validar_usuario()) {
+        $("#usuario_usuario").val("");
+        alert_bonita("success",titulo,"Usuario no existe");return;
+    }
     var contrase=  $("#contrase").val();
     if (contrase==="") {alert_bonita("error",titulo,"Ingrese contraseña Dr");return;}
+   
     var variable={cedula_medico,nombre_medico,telefono_medico,sexo_medico,id_especialidad,usuario_usuario,contrase};
     $.ajax({
         type: "POST",
@@ -58,3 +64,19 @@ function almacenar() {
         }
     });
 }
+
+
+function estado(cedula,estado) { 
+    var  titulo=localStorage.getItem("titulo");
+    var  dominio=localStorage.getItem("dominio")
+    var variable={cedula,estado};
+    $.ajax({
+        type: "POST",
+        url: dominio+"sistema/medico/php/estado.php",
+        data: variable,
+        success: function (response) {
+            tabla_paciente()
+
+        }
+    });
+ }

@@ -41,7 +41,7 @@
 
 
             <div class="col">
-                <button type="button" class="btn btn-outline-primary" onclick="tabla_paciente()">Cancelar</button>
+                <button type="button" class="btn btn-outline-primary" onclick="tabla_paciente()">Regresar</button>
             </div>
             <div class="col ">
                 <button type="button" class="btn btn-outline-primary" onclick="almacenar_alergia()">Almacenar alergia</button>
