@@ -1,6 +1,6 @@
 <?php
 
-$dominio='https://hospital.lab-mrtecks.com/';
+$dominio='https://hospitalclinicosantalucia.com/';
 ?>
 <nav class="navbar  bg-dark  fixed-top" data-bs-theme="dark">
   <div class="container-fluid">

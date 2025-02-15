@@ -1,7 +1,8 @@
 <?php
-
 include ("../conexion/interacion.php");
 session_start();
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 $user=seguridad($_REQUEST["user"]);
 $pass=seguridad($_REQUEST["pass"]); 
 $tabla="usuario";

@@ -1,8 +1,8 @@
 <?php
 include "sistema/conexion/interacion.php";
 $cedula=$_REQUEST["cedula"];
-$dominio='https://hospital.lab-mrtecks.com/';
-$dominio2='https://hospital.lab-mrtecks.com/sistema/php/labqr.php';
+$dominio='https://hospitalclinicosantalucia.com/';
+$dominio2='https://hospitalclinicosantalucia.com/sistema/php/labqr.php';
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -41,12 +41,13 @@ while ($row=$consulta->fetch()) {
     <label for="floatingInput">'.$row["prueba_medica"].'</label>
   </div>';
   $i++;
+
 }
 ?>
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="http://hospital.lab-mrtecks.com/assets/multimedia/logo.png" alt="Logo" width="100" height="60" class="d-inline-block align-text-top">
+      <img src="https://hospitalclinicosantalucia.com/assets/multimedia/logo.png" alt="Logo" width="100" height="60" class="d-inline-block align-text-top">
       Clinica Santa Lucia
     </a>
   </div>
@@ -87,7 +88,21 @@ function valor_input($id_det_examen)
   $where = " WHERE id_det_examen='$id_det_examen'";
   $consulta = consultas("$tabla", "$campos", " $where");
 $row=$consulta->fetch();
-return $row["valor"];
+if( is_array($row)) {
+  return $row["valor"];
+ 
+}
+
+}
+function valor_input2($id_det_examen)
+{
+  $tabla = "resultado";
+  $campos = " valor"; 
+  $where = " WHERE id_det_examen='$id_det_examen'";
+  $consulta = consultasp("$tabla", "$campos", " $where");
+// $row=$consulta->fetch();
+// return $row["valor"];
+return $consulta;
 }
 include("./assets/estructura_fin.php");
 ?>

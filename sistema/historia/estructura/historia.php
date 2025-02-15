@@ -1,8 +1,8 @@
 <?php
 /* 
-https://hospital.lab-mrtecks.com/sistema/historia/estrucutra/historia.php?id_atencion=8
+https://hospitalclinicosantalucia.com/sistema/historia/estrucutra/historia.php?id_atencion=8
 
-https://hospital.lab-mrtecks.com/sistema/historia/estructura/formato_historia.php?cedula=1720836400
+https://hospitalclinicosantalucia.com/sistema/historia/estructura/formato_historia.php?cedula=1720836400
 */
 date_default_timezone_set('America/Guayaquil');
 $cedula2=$_REQUEST["cedula"];

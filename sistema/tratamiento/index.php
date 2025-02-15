@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$dominio='https://hospital.lab-mrtecks.com/sistema/tratamiento/js/';
+$dominio='https://hospitalclinicosantalucia.com/sistema/tratamiento/js/';
 ?>
 
 <div class="row">

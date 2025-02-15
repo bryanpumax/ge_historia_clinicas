@@ -1,6 +1,6 @@
 <?php
 
-$dominio='https://hospital.lab-mrtecks.com/';
+$dominio='https://hospitalclinicosantalucia.com/';
 session_start(); // Iniciar la sesión
 session_unset(); // Eliminar todas las variables de sesión
 session_destroy(); // Destruir la sesión actual

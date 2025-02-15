@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $boton="Paciente"; 
-$dominio='https://hospital.lab-mrtecks.com/sistema/paciente/js/';
+$dominio='https://hospitalclinicosantalucia.com/sistema/paciente/js/';
 ?>
 <div class="row">
 <button class="btn btn-primary nuevo_btn" onclick="nuevo_btn()">Nuevo <?=$boton?></button>

@@ -16,7 +16,7 @@ $datos_clinica = "$dir<br>$telefono<br>$cel";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 include("../../../assets/estructura_inicio.php");
-$dominio = "https://hospital.lab-mrtecks.com/assets/multimedia/logo2_imprimir.jpg";
+$dominio = $_SERVER['DOCUMENT_ROOT']."/assets/multimedia/logo2_imprimir.jpg";
 $nombreImagen = "data:image/png;base64," . base64_encode(file_get_contents($dominio));
 $id_atencion =$_REQUEST["id_atencion"];
 

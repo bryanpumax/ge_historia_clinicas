@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $boton="consultorio"; 
-$dominio='https://hospital.lab-mrtecks.com/sistema/consultorio/js/';
+$dominio='https://hospitalclinicosantalucia.com/sistema/consultorio/js/';
 ?>
 
 <div class="row">

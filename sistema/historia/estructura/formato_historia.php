@@ -2,7 +2,7 @@
 
 include "../../conexion/interacion.php";    
 // include("../../../assets/estructura_inicio.php");
-$dominio = "https://hospital.lab-mrtecks.com/assets/multimedia/logo2_imprimir.jpg";
+$dominio = $_SERVER['DOCUMENT_ROOT']."/assets/multimedia/logo2_imprimir.jpg";
 $nombreImagen = "data:image/png;base64," . base64_encode(file_get_contents($dominio));
 $cedula=$_REQUEST["cedula"];
 $tabla="paciente";
@@ -11706,17 +11706,17 @@ while ($row=$consultaDiagnostico->fetch()) {
  $html.='  <table class="table table-bordered smallmega">  ';
 $html.='
 <tr>
-<td colspan="4"> Diagnostico:'.$row["descripcion"].'
+<td colspan="4"> Diagnostico:'.wordwrap($row["descripcion"],175,"<br>",true).'
 </td>
- 
+ <tr>
 <td colspan="3">Fecha inicio '.$row["fecha_inicio"].'</td>
 <td colspan="3">Fecha termino '.$row["fecha_fin"].'</td> 
 </tr>
  ';
  $html.='</table> ';
- $html.=tratamiento($row["descripcion"],$id_atencion); 
+ $html.=tratamiento( ($row["descripcion"]),$id_atencion); 
 
- $html.=examen($row["descripcion"],$id_atencion);
+ $html.=examen( ($row["descripcion"]),$id_atencion);
  
 }
 
@@ -11744,10 +11744,12 @@ if ($consulta->rowCount()==0) {
   $html.='</table> ';
   return $html;
 }
+
 $html.='     
 <thead class=" ">
+<tr><td colspan="10">'.$descripcions.'</td></tr>
   <tr>
-    <td colspan="5"><strong>Tratamiento de '.$descripcions.'</strong></td>
+    <td colspan="5"><strong>Tratamiento </strong></td>
     <td colspan="5"><strong>Medicamento</strong></td>  
   </tr>
 </thead>
@@ -11775,6 +11777,7 @@ $html.='</table> ';
   $where="  where examen.id_atencion=$id_atencion ";
   $inner="  INNER JOIN atencion on atencion.id_atencion=examen.id_atencion ";
   $consulta=consultas("$tabla","$campos","$inner $where");
+  $consulta2=consultas("$tabla","$campos","$inner $where");
   if ($consulta->rowCount()==0) {
     $html='  <table class="table table-bordered smallmega">  ';
     $html.='      <thead class=" "> 
@@ -11791,9 +11794,11 @@ $html.='</table> ';
   $html='  <table class="table table-bordered smallmega">  ';
   $html.='   
    <thead class=" ">
+   <tr> <td colspan="10"><strong>  '.$descripcions.'</strong></td> 
+   </tr>
     <tr>
     
-      <td colspan="5"><strong>Examen de '.$descripcions.'</strong></td> 
+      <td colspan="5"><strong>Examen  </strong></td> 
       <td colspan="5"><strong>Fecha</strong></td>  
     </tr>
   </thead>
@@ -11812,11 +11817,19 @@ $html.='</table> ';
  
   ';
  
-  $html.=detalle_examen($descripcion,$id_examen);
   }
   
   $html.='</tbody> ';
   $html.='</table> ';
+  while ($row=$consulta2->fetch()) {
+    $descripcion=$row["descripcion_examen"];
+    $id_examen=$row["id_examen"]; 
+     
+    $html.=detalle_examen($descripcion,$id_examen);
+  
+   }
+
+
   return $html;
    
 }
@@ -11831,13 +11844,15 @@ function detalle_examen($descripcions,$id_examen)
   INNER JOIN resultado on resultado.id_det_examen=detalle_examen.id_det_examen ";
   $consulta=consultas("$tabla","$campos","$inner $where");
   if ($consulta->rowCount()==0) {
-    $html=' 
+    $html=' <table class="table table-bordered smallmega">
     <tr class=" ">
     </tr>
     ';
+    $html.='</tbody> ';
+    $html.='</table> ';
     return $html;
   }
-  $html='  
+  $html='  <table class="table table-bordered smallmega">
   <thead class=" ">
     <tr>
     
@@ -11860,6 +11875,7 @@ function detalle_examen($descripcions,$id_examen)
   }
   
   $html.='</tbody> ';
+  $html.='</table> ';
   
   return $html;
    

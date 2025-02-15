@@ -6,10 +6,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include("./assets/estructura_inicio.php");
 
-?>
-<div class="m-auto">
-<a class="btn  btn-primary" href="http://hospital.lab-mrtecks.com/interfaz/login.php">Ingreso</a>
-</div>
-<?php
+ 
 include("./assets/estructura_fin.php");
 ?>
+<script>
+    $(document).ready(function () {
+        window.location.href="https://hospitalclinicosantalucia.com/interfaz/login.php"
+    });
+</script>

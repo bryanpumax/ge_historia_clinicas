@@ -1,5 +1,5 @@
 <?php
-$dominio='https://hospital.lab-mrtecks.com/';
+$dominio='https://hospitalclinicosantalucia.com/';
 ?>
 
 <script src="<?=$dominio?>assets/bootstrap/js/bootstrap.js"></script>

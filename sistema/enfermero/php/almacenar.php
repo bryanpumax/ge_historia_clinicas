@@ -21,8 +21,8 @@ $i=1;
 if ($consulta->rowCount()==0) {
     # code... 
     insertar("$tabla", "$campo", "$valor");
-
+echo "creado";
 }else {
-    echo "identificador ya existe";
+    echo "existe";
 }  
  

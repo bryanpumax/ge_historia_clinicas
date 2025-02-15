@@ -1,5 +1,5 @@
 <?php
-$dominio='https://hospital.lab-mrtecks.com/';
+$dominio='https://hospitalclinicosantalucia.com/';
 ?>
 <!DOCTYPE html>
 <html lang="Spanish">

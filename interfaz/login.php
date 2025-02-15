@@ -1,9 +1,9 @@
 <?php
 session_start();
 include("../assets/estructura_inicio.php");
-$dominio='https://hospital.lab-mrtecks.com/';
+$dominio='https://hospitalclinicosantalucia.com/';
 $titulo="Clinica Santa Lucia";
-$dominio2='https://hospital.lab-mrtecks.com/sistema';
+$dominio2='https://hospitalclinicosantalucia.com/sistema';
  
  
 if ($_SESSION["id_rol"]=="" ) {
@@ -17,15 +17,24 @@ if ($_SESSION["id_rol"]=="" ) {
   ';
 }
 ?>
-<style>
-  body{
-    background-color: #385995;
-  }
-</style>
-<img src="<?=$dominio?>assets/multimedia/logo.png"  class="" style="margin-left: 578px !important;" alt="...">
+<style> 
+  body {
+    background-color: #080e56;
+}
 
-<div class="card mt-4 mx-auto col-xs-12 col-lg-6 col-md-6 col-dm-6"  >
- 
+element.style {
+    margin-left: 530px !important;
+}
+
+card-body{
+background-color: #f5f5f5;
+}
+</style>
+
+<div class="mt-5 mb-5"><br></div>
+
+<div class="card mt-5 mx-auto col-xs-12 col-lg-6 col-md-6 col-dm-6"  >
+<img src="<?=$dominio?>assets/multimedia/logo.png"  class="w-25 mx-auto" style="" alt="...">
   <div class="card-body">
     <h5 class="card-title text-center">INGRESO AL SISTEMA</h5>
    

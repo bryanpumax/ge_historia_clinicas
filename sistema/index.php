@@ -6,7 +6,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include("../assets/estructura_inicio.php"); 
 
-$desconectar='https://hospital.lab-mrtecks.com/sistema/php/desconectar.php';
+$desconectar='https://hospitalclinicosantalucia.com/sistema/php/desconectar.php';
 if (!isset($_SESSION["id_rol"]) ) {
   # code...
   echo '

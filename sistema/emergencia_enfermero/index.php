@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$dominio='https://hospital.lab-mrtecks.com/sistema/emergencia_enfermero/js/';
+$dominio='https://hospitalclinicosantalucia.com/sistema/emergencia_enfermero/js/';
 ?>
 
 <div class="row">

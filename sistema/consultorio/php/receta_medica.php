@@ -1,6 +1,6 @@
 <?php
 /* 
-https://hospital.lab-mrtecks.com/sistema/consultorio/php/receta_medica.php?id_atencion=8
+https://hospitalclinicosantalucia.com/sistema/consultorio/php/receta_medica.php?id_atencion=8
 */
 date_default_timezone_set('America/Guayaquil');
 

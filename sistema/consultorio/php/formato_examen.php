@@ -11548,7 +11548,7 @@ function traducir_mes($m)
     return $meses[$m];
 }
 // Variables fijas
-$dominio = "https://hospital.lab-mrtecks.com/assets/multimedia/logo_solicitud_examenes.png";
+$dominio =$_SERVER['DOCUMENT_ROOT']. "/assets/multimedia/logo_solicitud_examenes.png";
 $nombreImagen = "data:image/png;base64," . base64_encode(file_get_contents($dominio));
 $fecha = date("y-m-d");
 $dia = date("d");
@@ -11627,7 +11627,7 @@ $options = new QROptions([
 ]);
 
 // Texto o datos para generar el código QR
-$text = 'https://hospital.lab-mrtecks.com/labclinicoqr.php?cedula='.$cedula_paciente;
+$text = 'https://hospitalclinicosantalucia.com/labclinicoqr.php?cedula='.$cedula_paciente;
 
 // Generar el código QR
 $qrcode = new QRCode($options);
